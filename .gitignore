@@ -1,0 +1,31 @@
+# --- Secrets / environment files ---
+# Ignore all .env files anywhere in the repo...
+.env
+*.env
+# ...but keep example/template env files that are safe to commit
+!.example.env
+!*.env.example
+!*.env.sample
+
+# --- SSH keys / certs, in case any get dropped into the repo by mistake ---
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# --- Vaultwarden runtime data (local dev volume) ---
+infrastructure/development/vw-data/
+
+# --- Backup artifacts / logs ---
+backups/*.tar.gz
+backups/*.log
+backups/backup.log
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/*
+!.vscode/extensions.json

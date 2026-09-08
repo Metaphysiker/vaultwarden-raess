@@ -1,0 +1,23 @@
+name: vaultwarden-raess
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden-raess
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - WEBSOCKET_ENABLED=${WEBSOCKET_ENABLED:-true}
+    volumes:
+      - vw-data:/data
+    ports:
+      - "${PORT_HTTP:-127.0.0.1:8080}:80"
+      - "${PORT_WEBSOCKET:-127.0.0.1:3012}:3012"
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+volumes:
+  vw-data:
